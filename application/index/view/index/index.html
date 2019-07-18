@@ -1,0 +1,439 @@
+<!doctype html>
+<html  lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>首页</title>
+	
+	<!-- Bootstrap -->
+	<link href="../../../static/css/index-bootstrap.min.css" rel="stylesheet">
+	<link href="../../../static/css/index-font-awesome.min.css" rel="stylesheet">
+	<link href="../../../static/css/index-magnific-popup.css" rel="stylesheet">
+	<link href="../../../static/css/index-animate.css" rel="stylesheet">
+	<link href="../../../static/css/index-owl.carousel.min.css" rel="stylesheet">
+
+	<!-- Main css -->
+	<link href="../../../static/css/index-main.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!--Header Area-->
+<header class="header-area">
+	<nav class="navbar sticky-top navbar-expand-lg main-menu">
+		<div class="container">
+			<!--
+			<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" class="d-inline-block align-top" alt=""></a>
+			
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="menu-toggle"></span>
+			</button>
+			-->
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav m-auto">
+					<li class="nav-item"><a class="nav-link" href="index.html">大数据过滤推荐系统</a></li>
+				</ul>
+				<!--
+				<div class="header-btn justify-content-end">
+					<button type="button" class="search-btn"><i class="fa fa-search"></i></button>
+				</div>
+				-->
+			</div>
+		</div>
+	</nav>
+</header>
+<!--/Header Area-->
+
+<!-- 轮播区域 -->
+<section class="hero-area owl-carousel">
+	<!--第一张滚动图 -->
+	<div class="single-hero dark-overlay" style="background: url('../../../static/images/index/hero-3.jpg') no-repeat;">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="hero-sub">
+						<div class="table-cell">
+							<div class="hero-left">
+								<h1>电影库 <br> 个性化推荐</h1>
+								<p>在 此 寻 找 美 妙 电 影</p>
+								<!-- <a href="#" class="bttn-mid btn-fill"> Download Now</a>-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--第两张滚动图 -->
+	<div class="single-hero dark-overlay" style="background: url('../../../static/images/index/hero-6.jpg') no-repeat;">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
+					<div class="hero-sub">
+						<div class="table-cell">
+							<div class="hero-box">
+								<h1>点亮红心</h1>
+								<p>点亮红心，列为我喜欢的电影，让我们更加懂你</p>
+								<!-- <a href="#" class="bttn-mid btn-fill video-popup"> <i class="fa fa-play"></i>Watch now</a> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--第三张滚动图 -->
+	<div class="single-hero dark-overlay" style="background: url('../../../static/images/index/hero-2.jpg') no-repeat;">
+		<div class="hero-sub">
+			<div class="table-cell">
+				<div class="hero-normal">
+					<p>万  条 数 据 , 只 为 更 懂 你！</p>
+					<h1>你的喜爱 全在这里</h1>
+					<!-- <a href="" class="bttn-mid btn-fill"><i class="fa fa-heart"></i>Watch Later</a> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/轮播区域-->
+
+	
+	
+<!--今日热门-->
+<section class="cat-section section-padding-2 gray-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-8 col-lg-8 col-md-6 col-sm-8">
+				<div class="section-title">
+					<h2>今日热门</h2>
+					<p>他们都在看些什么？</p>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-4">
+				<div class="title-right">
+					<a href="../library/library" class="bttn-small btn-fill"><i class="fa fa-angle-left"></i>电影库</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+				<div class="cat-carousel owl-carousel">
+					{volist name="hottoday" id="vo"}
+					<div class="single-cat-item">
+						<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="310" width="200" >
+						<div class="item-meta">
+							<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
+							<p>{$vo.tag}</p>
+							<!--
+							<a href="" class="watch-list-btn"><i class="fa fa-sliders"></i>Add watch list</a>
+							-->
+						</div>
+					</div>
+					{/volist}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--/今日热门-->
+
+<!--个性推荐-->
+<section class="cat-section section-padding-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-8 col-lg-8 col-md-6 col-sm-8">
+				<div class="section-title">
+					<h2>为您推荐</h2>
+					<p>您的私人专属</p>
+				</div>
+			</div>
+			<!--
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-4">
+				<div class="title-right">
+					<a href="" class="bttn-small btn-fill"><i class="fa fa-angle-left"></i>更多</a>
+				</div>
+			</div>
+			-->
+		</div>
+		<div class="row">
+			{volist name="recommendation" id="vo"}
+			<div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
+				<div class="single-cat-item">
+					<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="250" width="200" >
+					<div class="item-meta">
+						<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
+						<p>{$vo.tag}</p>
+					</div>
+				</div>
+			</div>
+			{/volist}
+		</div>
+	</div>
+</section>
+<!--/个性推荐-->
+
+<!--左滑右滑
+<section class="cat-section section-padding-2 gray-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-8 col-lg-8 col-md-6 col-sm-8">
+				<div class="section-title">
+					<h2>Favorite Items</h2>
+					<p>Look at our popular downloads</p>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-4">
+				<div class="title-right">
+					<a href="" class="bttn-small btn-fill"><i class="fa fa-angle-left"></i> See Favorites</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+				<div class="cat-carousel owl-carousel">
+					<div class="single-cat-item">
+						<img src="assets/images/items/item-11.jpg" alt="">
+						<div class="item-meta">
+							<h4><a href="">Content name</a></h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+							<a href="" class="watch-list-btn"><i class="fa fa-sliders"></i>Add watch list</a>
+						</div>
+					</div>
+					<div class="single-cat-item">
+						<img src="assets/images/items/item-8.jpg" alt="">
+						<div class="item-meta">
+							<h4><a href="">Content name</a></h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+							<a href="" class="watch-list-btn"><i class="fa fa-sliders"></i>Add watch list</a>
+						</div>
+					</div>
+					<div class="single-cat-item">
+						<img src="assets/images/items/item-14.jpg" alt="">
+						<div class="item-meta">
+							<h4><a href="">Content name</a></h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+							<a href="" class="watch-list-btn"><i class="fa fa-sliders"></i>Add watch list</a>
+						</div>
+					</div>
+					<div class="single-cat-item">
+						<img src="assets/images/items/item-6.jpg" alt="">
+						<div class="item-meta">
+							<h4><a href="">Content name</a></h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+							<a href="" class="watch-list-btn"><i class="fa fa-sliders"></i>Add watch list</a>
+						</div>
+					</div>
+					<div class="single-cat-item">
+						<img src="assets/images/items/item-9.jpg" alt="">
+						<div class="item-meta">
+							<h4><a href="">Content name</a></h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+							<a href="" class="watch-list-btn"><i class="fa fa-sliders"></i>Add watch list</a>
+						</div>
+					</div>
+					<div class="single-cat-item">
+						<img src="assets/images/items/item-2.jpg" alt="">
+						<div class="item-meta">
+							<h4><a href="">Content name</a></h4>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
+							<a href="" class="watch-list-btn"><i class="fa fa-sliders"></i>Add watch list</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/左滑右滑-->
+
+
+<!--Promo Area
+<section class="promo-area section-padding-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+				<div class="promo-media">
+					<img src="assets/images/promo.jpg" alt="">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+				<div class="promo-content">
+					<h3>About the Vidco</h3>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat velit cum alias similique nam facilis eligendi ipsa, placeat error totam. Harum obcaecati libero voluptatum. <br> <br> Aspernatur dignissimos nam cum rem veritatis. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo quia asperiores cumque soluta dignissimos assumenda fuga dolorem cupiditate totam repudiandae officiis ipsum eaque placeat provident odio voluptates id inventore deleniti, dignissimos assumenda fuga dolorem cupiditate totam repudiandae officiis ipsum.</p>
+					<a href="#" class="bttn-mid btn-fill">Learn more</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/Promo Area-->
+
+<!--Blog Area
+<section class="blog-area section-padding-2 gray-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-8 wow fadeInUp" data-wow-delay="0.3s">
+				<div class="section-title">
+					<h2>All Latest Readings</h2>
+					<p>Get Latest Tutorials and updates</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="0.4s">
+				<div class="single-blog-block">
+					<div class="single-blog-block-img">
+						<img src="assets/images/blog/blog-1.jpg" alt="">
+						<a href="#"><i class="fa fa-expand"></i></a>
+					</div>
+					<div class="single-blog-block-content">
+						<div class="blog-meta">
+							<h3><a href="#">Shooting break: 'It will blow your mind'</a></h3>
+							<div class="blog-info">
+								<p>By: <a href="">Thomas paul</a> In: <a href="">Movie</a></p>
+							</div>
+							<div class="blog-text">
+								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
+				<div class="single-blog-block">
+					<div class="single-blog-block-img">
+						<img src="assets/images/blog/blog-2.jpg" alt="">
+						<a href="#"><i class="fa fa-expand"></i></a>
+					</div>
+					<div class="single-blog-block-content">
+						<div class="blog-meta">
+							<h3><a href="#">How Jeams Cameron manage his movie break</a></h3>
+							<div class="blog-info">
+								<p>By: <a href="">Thomas paul</a> In: <a href="">Shooting</a></p>
+							</div>
+							<div class="blog-text">
+								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="0.6s">
+				<div class="single-blog-block">
+					<div class="single-blog-block-img">
+						<img src="assets/images/blog/blog-3.jpg" alt="">
+						<a href="#"><i class="fa fa-expand"></i></a>
+					</div>
+					<div class="single-blog-block-content">
+						<div class="blog-meta">
+							<h3><a href="#">Top 10 Film Theater of United State of America</a></h3>
+							<div class="blog-info">
+								<p>By: <a href="">Thomas paul</a> In: <a href="">Movie</a></p>
+							</div>
+							<div class="blog-text">
+								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="0.7s">
+				<div class="single-blog-block">
+					<div class="single-blog-block-img">
+						<img src="assets/images/blog/blog-4.jpg" alt="">
+						<a href="#"><i class="fa fa-expand"></i></a>
+					</div>
+					<div class="single-blog-block-content">
+						<div class="blog-meta">
+							<h3><a href="#">Best tools for edit your flim assets fast and more easily</a></h3>
+							<div class="blog-info">
+								<p>By: <a href="">Thomas paul</a> In: <a href="">Editing</a></p>
+							</div>
+							<div class="blog-text">
+								<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/Blog Area-->
+
+<!--Footer Area
+<footer class="footer-area section-padding-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+				<div class="footer-content">
+					<a href=""><img src="assets/images/logo.png" alt=""></a>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos vel tempora obcaecati explicabo blanditiis soluta veritatis</p>
+					<div class="footer-social">
+						<a href=""><i class="fa fa-facebook"></i></a>
+						<a href=""><i class="fa fa-instagram"></i></a>
+						<a href=""><i class="fa fa-pinterest"></i></a>
+						<a href=""><i class="fa fa-twitter"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-6">
+						<div class="footer-menu">
+							<h3>Quick Links</h3>
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="">About</a></li>
+								<li><a href="">Buy Now</a></li>
+								<li><a href="">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6">
+						<div class="footer-menu">
+							<h3>Important Links</h3>
+							<ul>
+								<li><a href="">Our Partners</a></li>
+								<li><a href="">Featured Card</a></li>
+								<li><a href="">How to apply</a></li>
+								<li><a href="">Card List</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6">
+						<div class="footer-menu">
+							<h3>Essential Links</h3>
+							<ul>
+								<li><a href="">Privacy Policy</a></li>
+								<li><a href="">FAQ</a></li>
+								<li><a href="">Terms and Service</a></li>
+								<li><a href="">Security</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer><!--/Footer Area-->
+
+	
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../../../static/js/index-jquery-3.2.1.min.js"></script>
+<script src="../../../static/js/index-jquery-migrate.js"></script>
+
+<script src="../../../static/js/index-popper.js"></script>
+<script src="../../../static/js/index-bootstrap.min.js"></script>
+<script src="../../../static/js/index-owl.carousel.min.js"></script>
+
+<script src="../../../static/js/index-magnific-popup.min.js"></script>
+<script src="../../../static/js/index-wow.min.js"></script>
+<script src="../../../static/js/index-scrollUp.min.js"></script>
+
+<script src="../../../static/js/index-script.js"></script>
+</body>
+</html>

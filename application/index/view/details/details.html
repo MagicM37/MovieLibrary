@@ -1,0 +1,133 @@
+<!doctype html>
+{volist name="moviedetails" id="vo"}
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{$vo.name}</title>
+	
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<link href="../../../static/css/details-bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="../../../static/css/details-style.css" rel="stylesheet" type="text/css" media="all" />
+	
+	<!-- start plugins -->
+	<script type="text/javascript" src="../../../static/css/details-jquery-1.11.1.min.js"></script>
+	<link href="http://fonts.useso.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="container">
+	<div class="container_wrap">
+		<div class="header_top">
+			<div class="col-sm-3 header_right">
+			    <ul class="header_right_box">
+					<li><img src="../../../static/images/details/p1.png" alt=""/></li>
+					<li><p><a href="login.html">用户昵称</a></p></li>
+					<!-- <li class="last"><i class="edit"> </i></li> -->
+					<div class="clearfix"> </div>
+			    </ul>
+			</div>
+			<div class="clearfix"> </div>
+	    </div>
+		<div class="content">
+      	   <div class="movie_top">
+      	         <div class="col-md-9 movie_box">
+						
+                        <div class="grid images_3_of_2">
+                        	<!--
+							<div class="movie_image">
+                                <!-- <span class="movie_rating">5.0</span> -->
+                                <img src = "../../../static/images/movie/{$vo.imgname}" alt=""/>
+
+                        </div>
+                        <div class="desc1 span_3_of_2">
+							<p class="movie_option"><strong>片名：</strong>{$vo.name}</p>
+                        	<p class="movie_option"><strong>国家/地区: </strong>{$vo.location}</p>
+                        	<p class="movie_option"><strong>导演: </strong>{$vo.director}</p>
+                        	<p class="movie_option"><strong>演员: </strong>{$vo.actor}</p>
+                        	<p class="movie_option"><strong>上映时间: </strong>{$vo.releasedate}</p>
+                        	<p class="movie_option"><strong>时长: </strong>{$vo.runtime}</p>
+                        	<p class="movie_option"><strong>类别: </strong>{$vo.tag}</p>
+							<p class="movie_option"><strong>评分: </strong>{$vo.rate}</p>
+                            <!-- <p class="movie_option"><strong>Age restriction: </strong>13</p> -->
+                            <!-- <div class="down_btn"><a class="btn1" href="#"><span> </span>Download</a></div> -->
+                         </div>
+						 
+                        <div class="clearfix"> </div>
+		                <!--
+					 	<form>
+							<div class="to">
+		                     	<input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+							 	<input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left:3%">
+							</div>
+							<div class="text">
+			                   <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>
+			                </div>
+			                <div class="form-submit1">
+					           <input name="submit" type="submit" id="submit" value="Submit Your Message"><br>
+					        </div>
+							<div class="clearfix"></div>
+                 		</form>
+						-->
+		                <div class="single">
+		                <h1>电影简介</h1>
+		                <ul class="single_list">
+					        <li>
+					            <div class="data">
+									<div class="title">{$vo.summary}</div>
+					            </div>
+					            <div class="clearfix"></div>
+					        </li>
+			  			</ul>
+                      </div>
+                      </div>
+					 
+                      <div class="col-md-3">
+                      	<div class="movie_img"><div class="grid_2">
+							<img src="../../../static/images/details/pic6.jpg" class="img-responsive" alt="">
+							<div class="caption1">
+								<!--	
+								<ul class="list_5 list_7">
+							    	<li><i class="icon5"> </i><p>3,548</p></li>
+							    </ul>
+							    <i class="icon4 icon6 icon7"> </i>
+								-->
+							    <p class="m_3">美国队长</p>
+							</div>
+						    </div>
+						   </div>
+                      	  <div class="grid_2 col_1">
+							<img src="../../../static/images/details/pic2.jpg" class="img-responsive" alt="">
+							<div class="caption1">
+								<!--
+								<ul class="list_3 list_7">
+						    		<li><i class="icon5"> </i><p>3,548</p></li>
+						    	</ul>
+						    	<i class="icon4 icon7"> </i>
+								-->
+						    	<p class="m_3">复仇者联盟</p>
+							</div>
+						   </div>
+						    <div class="grid_2 col_1">
+							<img src="../../../static/images/details/pic9.jpg" class="img-responsive" alt="">
+							<div class="caption1">
+								<!--
+								<ul class="list_3 list_7">
+						    		<li><i class="icon5"> </i><p>3,548</p></li>
+						    	</ul>
+						    	<i class="icon4 icon7"> </i>
+								-->
+						    	<p class="m_3">无敌浩克</p>
+							</div>
+						   </div>
+		               </div> 
+                      <div class="clearfix"> </div>
+                  </div>
+           </div>
+    </div>
+</div>
+
+</body>
+{/volist}
+</html>
