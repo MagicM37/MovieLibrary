@@ -20,7 +20,8 @@ class Library extends Controller
 				   ->select();
 		$this->assign('library',$list);
 		*/
-		if(!Session::has('user'))
+		
+		if(!Session::has('userinfo'))
 		{
             return $this->error('您没有登陆',url('Login/login'));
         }
