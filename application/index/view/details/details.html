@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>{$vo.name}</title>
-	
+	{/volist}
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<link href="../../../static/css/details-bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="../../../static/css/details-style.css" rel="stylesheet" type="text/css" media="all" />
@@ -23,7 +23,9 @@
 			<div class="col-sm-3 header_right">
 			    <ul class="header_right_box">
 					<li><img src="../../../static/images/details/p1.png" alt=""/></li>
-					<li><p><a href="login.html">用户昵称</a></p></li>
+					{volist name="userinfo" id="user"}
+					<li><p><a href="login.html">{$user.uname}</a></p></li>
+					{/volist}
 					<!-- <li class="last"><i class="edit"> </i></li> -->
 					<div class="clearfix"> </div>
 			    </ul>
@@ -33,7 +35,7 @@
 		<div class="content">
       	   <div class="movie_top">
       	         <div class="col-md-9 movie_box">
-						
+						{volist name="moviedetails" id="vo"}
                         <div class="grid images_3_of_2">
                         	<!--
 							<div class="movie_image">

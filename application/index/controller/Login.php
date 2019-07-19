@@ -5,6 +5,7 @@ use think\Db;
 use think\Request;
 use \think\View;
 use think\Input;
+use think\Session;
 
 header("Content-Type:text/html;charset=utf-8");
 	
@@ -28,8 +29,7 @@ class Login extends Controller
 		
 		if($res && $res['upassword'] == $password)  
 		{  
-			session('userID',$res['uid']); 
-			//echo "<script>alert('登录成功');location.href='index';</script>";
+			Session::set('userinfo',Db::table('user')->where('uemail',$email)->column('uid,uname,uemail'));
 			$this->success('登录成功', 'index/index');
 		}  
 		else 

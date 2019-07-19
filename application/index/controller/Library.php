@@ -6,6 +6,7 @@ use think\Db;
 use think\Request;
 use \think\View;
 use think\Input;
+use think\Session;
 
 class Library extends Controller
 {
@@ -19,6 +20,15 @@ class Library extends Controller
 				   ->select();
 		$this->assign('library',$list);
 		*/
+		if(!Session::has('user'))
+		{
+            return $this->error('您没有登陆',url('Login/login'));
+        }
+		$userinfo = Session::get('userinfo');
+		//dump(session('user'));
+		//dump($userinfo);
+		$this -> assign('userinfo',$userinfo);
+		
 		// 查询状态为1的用户数据 并且每页显示10条数据
 		$list = Db::name('movielibrary')->paginate(24,22850);
 		// 获取分页显示

@@ -50,6 +50,11 @@
 				<ul class="navbar-nav m-auto">
 					<li class="nav-item"><a class="nav-link" href="index.html">电影库</a></li>
 				</ul>
+				{volist name="userinfo" id="vo"}
+				<ul class="navbar-nav m-auto">
+					<li class="nav-item"><a class="nav-link" href="index.html">{$vo.uname}</a></li>
+				</ul>
+				{/volist}
 				<div class="header-btn justify-content-end">
 					<button type="button" class="search-btn"><i class="fa fa-search"></i></button>
 				</div>

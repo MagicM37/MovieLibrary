@@ -7,6 +7,7 @@ use think\Request;
 use \think\View;
 use think\Input;
 use think\Url;
+use think\Session;
 
 header("Content-Type:text/html;charset=utf-8");
 
@@ -14,6 +15,14 @@ class Index extends Controller
 {
     public function Index()
 	{
+		if(!Session::has('user'))
+		{
+            return $this->error('您没有登陆',url('Login/login'));
+        }
+		$userinfo = Session::get('userinfo');
+		//dump(session('user'));
+		//dump($userinfo);
+		$this -> assign('userinfo',$userinfo);
 		//$view = new View();
 		$list1 = Db::table('movielibrary')
 				   ->field('imgname,movieID,name,tag')
