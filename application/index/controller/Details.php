@@ -12,6 +12,11 @@ class Details extends Controller
 {
     public function Details()
 	{
+		if(!Session::has('userinfo'))
+		{
+            return $this->error('您没有登陆',url('Login/login'));
+        }
+		
 		$userinfo = Session::get('userinfo');
 		//dump(session('user'));
 		//dump($userinfo);
@@ -26,6 +31,13 @@ class Details extends Controller
 		$this->assign('moviedetails',$list);
 
 		return $this->fetch('details');
+	}
+	public function logout()
+	{
+		//销毁session
+		session("userinfo", NULL);
+		//跳转页面
+		return $this->success('退出登录成功',url('Login/login'));
 	}
 }
 

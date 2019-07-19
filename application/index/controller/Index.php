@@ -15,7 +15,7 @@ class Index extends Controller
 {
     public function Index()
 	{
-		if(!Session::has('user'))
+		if(!Session::has('userinfo'))
 		{
             return $this->error('您没有登陆',url('Login/login'));
         }
@@ -38,4 +38,12 @@ class Index extends Controller
 		
 		return $this->fetch('index');
 	} 
+	
+	public function logout()
+	{
+		//销毁session
+		session("userinfo", NULL);
+		//跳转页面
+		return $this->success('退出登录成功',url('Login/login'));
+	}
 }
