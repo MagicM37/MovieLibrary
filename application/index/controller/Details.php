@@ -32,12 +32,24 @@ class Details extends Controller
 
 		return $this->fetch('details');
 	}
+	
 	public function logout()
 	{
 		//销毁session
 		session("userinfo", NULL);
 		//跳转页面
 		return $this->success('退出登录成功',url('Login/login'));
+	}
+	
+	public function mylove()
+	{
+		$mid = request()->param("id");
+		$uid = Session::get('userID');
+		
+		$data = ['userid' => $uid , 'mid' => $mid];
+		Db::table('relation')->insert($data);
+		
+		return json(["code" => 200, "msg" => "收藏成功" , "id" => $mid]);
 	}
 }
 

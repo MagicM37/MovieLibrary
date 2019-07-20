@@ -40,6 +40,16 @@ class Library extends Controller
 		// 渲染模板输出
 		return $this->fetch();
 	}
+	public function mylove()
+	{
+		$mid = request()->param("id");
+		$uid = Session::get('userID');
+		
+		$data = ['userid' => $uid , 'mid' => $mid];
+		Db::table('relation')->insert($data);
+		
+		return json(["code" => 200, "msg" => "收藏成功" , "id" => $mid]);
+	}
 }
 
 ?>
