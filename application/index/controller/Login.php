@@ -30,6 +30,8 @@ class Login extends Controller
 		if($res && $res['upassword'] == $password)  
 		{  
 			Session::set('userinfo',Db::table('user')->where('uemail',$email)->column('uid,uname,uemail'));
+			//Session::set('userID',Db::table('user')->where('uemail',$email)->column('uid'));
+			Session::set('userID',$res['uid']);
 			$this->success('登录成功', 'index/index');
 		}  
 		else 

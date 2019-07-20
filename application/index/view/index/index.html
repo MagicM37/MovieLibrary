@@ -16,6 +16,9 @@
 
 	<!-- Main css -->
 	<link href="../../../static/css/index-main.css" rel="stylesheet">
+	
+	<script src="../../../static/js/details-jquery-1.11.1.min.js">
+	</script>
 </head>
 
 <body>
@@ -130,9 +133,8 @@
 						<div class="item-meta">
 							<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
 							<p>{$vo.tag}</p>
-							<!--
-							<a href="" class="watch-list-btn"><i class="fa fa-sliders"></i>Add watch list</a>
-							-->
+							<input type="button" class="clickme" mid="{$vo.movieID}" value="添加到我的喜欢">
+							
 						</div>
 					</div>
 					{/volist}
@@ -170,6 +172,7 @@
 					<div class="item-meta">
 						<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
 						<p>{$vo.tag}</p>
+						<input type="button" class="clickme" mid="{$vo.movieID}" value="添加到我的喜欢">
 					</div>
 				</div>
 			</div>
@@ -439,5 +442,34 @@
 <script src="../../../static/js/index-scrollUp.min.js"></script>
 
 <script src="../../../static/js/index-script.js"></script>
+
+<script>
+	$(".clickme").click(function()
+	{
+		var id = $(this).attr("mid");
+		var el = $(this);
+		$.ajax(
+		{
+	        type:"GET",
+	        url:"mylove",
+			data:{"id":id},
+	        dataType:"json", 
+	        success:function(data)
+			{
+	         	alert(data["msg"]);
+				if(data["code"] == 200)
+				{
+					el.val("已收藏");
+				}
+	        },
+	        error:function(jqXHR)
+			{
+	           alert("发生错误："+ jqXHR.status);
+	        }
+		});
+	});		
+	
+	
+</script>
 </body>
 </html>
