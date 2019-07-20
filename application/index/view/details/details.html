@@ -55,7 +55,7 @@
                         	<p class="movie_option"><strong>时长: </strong>{$vo.runtime}</p>
                         	<p class="movie_option"><strong>类别: </strong>{$vo.tag}</p>
 							<p class="movie_option"><strong>评分: </strong>{$vo.rate}</p>
-							<input type="button" class="clickme" mid="{$vo.movieID}" value="添加到我的喜欢">
+							<input type="button" class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" value="添加到我的喜欢">
                             <!-- <p class="movie_option"><strong>Age restriction: </strong>13</p> -->
                             <!-- <div class="down_btn"><a class="btn1" href="#"><span> </span>Download</a></div> -->
                          </div>
@@ -139,12 +139,14 @@
 	$(".clickme").click(function()
 	{
 		var id = $(this).attr("mid");
+		var tag = $(this).attr("mtag");
+		var rate = $(this).attr("mrate");
 		var el = $(this);
 		$.ajax(
 		{
 	        type:"GET",
 	        url:"mylove",
-			data:{"id":id},
+			data:{"id":id,"tag":tag,"rate":rate},
 	        dataType:"json", 
 	        success:function(data)
 			{
@@ -160,6 +162,8 @@
 	        }
 		});
 	});		
+	
+	
 </script>
 
 </body>

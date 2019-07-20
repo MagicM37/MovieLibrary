@@ -44,12 +44,14 @@ class Details extends Controller
 	public function mylove()
 	{
 		$mid = request()->param("id");
+		$tag = request()->param("tag");
+		$rate = request()->param("rate");
 		$uid = Session::get('userID');
-		
-		$data = ['userid' => $uid , 'mid' => $mid];
+
+		$data = ['userid' => $uid , 'mid' => $mid , 'tag' => $tag , 'rate' => $rate];
 		Db::table('relation')->insert($data);
 		
-		return json(["code" => 200, "msg" => "收藏成功" , "id" => $mid]);
+		return json(["code" => 200, "msg" => "已收藏" , "id" => $mid]);
 	}
 }
 

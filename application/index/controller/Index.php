@@ -25,13 +25,13 @@ class Index extends Controller
 		$this -> assign('userinfo',$userinfo);
 		//$view = new View();
 		$list1 = Db::table('movielibrary')
-				   ->field('imgname,movieID,name,tag')
+				   ->field('imgname,movieID,name,rate,tag')
 				   ->limit(6)
 				   ->select();
 		$this->assign('hottoday',$list1);
 		
 		$list2 = Db::table('movielibrary')
-				   ->field('imgname,name,tag,movieID')
+				   ->field('imgname,name,tag,movieID,rate')
 				   ->limit(5,18)
 				   ->select();
 		$this->assign('recommendation',$list2);
@@ -50,11 +50,13 @@ class Index extends Controller
 	public function mylove()
 	{
 		$mid = request()->param("id");
+		$tag = request()->param("tag");
+		$rate = request()->param("rate");
 		$uid = Session::get('userID');
-		
-		$data = ['userid' => $uid , 'mid' => $mid];
+
+		$data = ['userid' => $uid , 'mid' => $mid , 'tag' => $tag , 'rate' => $rate];
 		Db::table('relation')->insert($data);
 		
-		return json(["code" => 200, "msg" => "收藏成功" , "id" => $mid]);
+		return json(["code" => 200, "msg" => "已收藏" , "id" => $mid]);
 	}
 }

@@ -133,7 +133,7 @@
 						<div class="item-meta">
 							<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
 							<p>{$vo.tag}</p>
-							<input type="button" class="clickme" mid="{$vo.movieID}" value="添加到我的喜欢">
+							<input type="button" class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" value="添加到我的喜欢">
 							
 						</div>
 					</div>
@@ -172,7 +172,7 @@
 					<div class="item-meta">
 						<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
 						<p>{$vo.tag}</p>
-						<input type="button" class="clickme" mid="{$vo.movieID}" value="添加到我的喜欢">
+						<input type="button" class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" value="添加到我的喜欢">
 					</div>
 				</div>
 			</div>
@@ -447,12 +447,14 @@
 	$(".clickme").click(function()
 	{
 		var id = $(this).attr("mid");
+		var tag = $(this).attr("mtag");
+		var rate = $(this).attr("mrate");
 		var el = $(this);
 		$.ajax(
 		{
 	        type:"GET",
 	        url:"mylove",
-			data:{"id":id},
+			data:{"id":id,"tag":tag,"rate":rate},
 	        dataType:"json", 
 	        success:function(data)
 			{
