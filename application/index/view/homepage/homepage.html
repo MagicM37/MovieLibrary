@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>电影库</title>
+
+<!-- Bootstrap -->
+	<link href="../../../static/css/index-bootstrap.min.css" rel="stylesheet">
+	<link href="../../../static/css/index-font-awesome.min.css" rel="stylesheet">
+	<link href="../../../static/css/index-magnific-popup.css" rel="stylesheet">
+	<link href="../../../static/css/index-animate.css" rel="stylesheet">
+	<link href="../../../static/css/index-owl.carousel.min.css" rel="stylesheet">
+
+	<!-- Main css -->
+	<link href="../../../static/css/index-main.css" rel="stylesheet">
+	
+</head>
+
+<body>
+
+
+<!--Full Search-->
+<div class="search-full">
+	<button type="submit" class="search-close"><i class="fa fa-close"></i></button>
+	<div class="search-full--inner">
+		<div class="conatiner">
+			<div class="row justify-content-center">
+				<div class="col-xl-6 col-lg-6 col-md-10 col-sm-10">
+					<form class="main-search-form">
+						<input type="search" name="main_search" id="main_search" placeholder="Search here...">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!--/Full Search-->
+
+<!--Header Area-->
+<header class="header-area">
+	<nav class="navbar sticky-top navbar-expand-lg main-menu">
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="menu-toggle"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav m-auto">
+					<li class="nav-item"><a class="nav-link" href="index.html">电影库</a></li>
+				</ul>
+				<div class="header-btn justify-content-end">
+					<button type="button" class="search-btn"><i class="fa fa-search"></i></button>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+<!--/Header Area-->
+
+
+<!--Category Section-->
+<section class="cat-section section-padding-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-8 col-lg-8 col-md-6 col-sm-8">
+				<div class="section-title">
+					<h2>个人主页</h2>
+					<p>个人信息</p>
+					<p>我的收藏</p>
+									{volist name="personalinfo" id="vo"}
+									<table>
+									<td>用户名<p>{$vo.uname}</p></td>
+									<td>用户邮箱<p>{$vo.uemail}</p></td>
+									</table>
+									{/volist}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{volist name="myfavor" id="vo"}
+			<div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
+				<div class="single-cat-item">
+					<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="250" width="200" >
+					<div class="item-meta">
+						<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
+						<p>{$vo.tag}</p>
+					</div>
+				</div>
+			</div>
+			{/volist}
+		</div>
+	</div>
+</section>
+<!--/Category Section-->
+
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../../../static/js/index-jquery-3.2.1.min.js"></script>
+<script src="../../../static/js/index-jquery-migrate.js"></script>
+
+<script src="../../../static/js/index-popper.js"></script>
+<script src="../../../static/js/index-bootstrap.min.js"></script>
+<script src="../../../static/js/index-owl.carousel.min.js"></script>
+
+<script src="../../../static/js/index-magnific-popup.min.js"></script>
+<script src="../../../static/js/index-wow.min.js"></script>
+<script src="../../../static/js/index-scrollUp.min.js"></script>
+
+<script src="../../../static/js/index-script.js"></script>
+
+</body>
+</html>

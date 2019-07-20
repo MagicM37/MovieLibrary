@@ -30,9 +30,19 @@ class Index extends Controller
 				   ->select();
 		$this->assign('hottoday',$list1);
 		
+		$uid = Session::get('userID');
+		
+		$avg_demo = Db::table('relation')
+					->where('userid',$uid)
+					->avg('rate'); 
+		
+		$avg = round($avg_demo,1);
+		
 		$list2 = Db::table('movielibrary')
-				   ->field('imgname,name,tag,movieID,rate')
-				   ->limit(5,18)
+				   ->field('imgname,rate,name,tag,movieID')
+				   ->whereOr('rate','=',$avg)
+				   ->where('tag',['like','%动画%'],['like','%剧情%'],'or')
+				   ->limit(18)
 				   ->select();
 		$this->assign('recommendation',$list2);
 		

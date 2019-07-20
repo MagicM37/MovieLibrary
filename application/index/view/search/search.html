@@ -1,0 +1,30 @@
+<!doctype html>
+<html  lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<title>搜索</title>
+</head>
+
+<body>
+    <div class="form-container sign-up-container">
+            <form action="search" method="post" enctype="multipart/form-data">
+                <h1>搜索</h1>
+                <input type="text" placeholder="请输入电影名" name="mvname">
+                <button  type="submit" name="submit">搜索</button>
+            </form>
+						{volist name="search" id="vo"}
+						<div class="single-cat-item">
+							<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="310" width="200" >
+							<div class="item-meta">
+								<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
+								<p>{$vo.tag}</p>
+								<p>{$vo.rate}</p>
+								<!--
+								<a href="" class="watch-list-btn"><i class="fa fa-sliders"></i>Add watch list</a>
+								-->
+							</div>
+						</div>
+						{/volist}
+    </div>
+</body>
+</html>
