@@ -13,13 +13,12 @@
             <form action="register" method="post" enctype="multipart/form-data">
                 <h1>注册</h1>
 				<br>
-                <span>使用您的邮箱进行注册</span>
-				<br>
                 <input type="text" placeholder="昵称" name="name">
                 <input type="email" placeholder="电子邮箱" name="email">
                 <input type="password" placeholder="登录密码" name="pass"> 
 				<input type="password" placeholder="再次输入密码" name="confirm">
-				<br>
+				<img src="{:captcha_src()}" alt="captcha" />
+				<input type="text" name="verifyCode" class="pass-text-input " placeholder="请输入验证码">
                 <button  type="submit" name="submit">注册</button>
             </form>
         </div>

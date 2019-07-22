@@ -42,14 +42,44 @@ class Login extends Controller
 	}
 	public function register()
 	{
+		//接值
 		$name = input('request.name');
 		$email = input('request.email');
 		$pass = input('request.pass');
 		$confirm = input('request.confirm');
 		
+		//email空值判断
+		if($email == NULL)
+		{
+			$this->error('请填写邮箱地址');
+		}
+		
+		//pass空值判断
+		if($pass == NULL)
+		{
+			$this->error('请设置登录密码');
+		}
+		
+		//confirm空值判断
+		if($confirm == NULL)
+		{
+			$this->error('请再次填写登录密码');
+		}
+		
+		//注册判断
 		if($pass == $confirm)
 		{
 			$res = Db::table('user')->where('uemail',$email)->find();
+			//验证码检验
+			if(request()->isPost())
+			{
+				$data = input('post.');
+				if(!captcha_check($data['verifyCode'])) 
+				{
+					// 校验失败
+					$this->error('验证码不正确');
+				}
+			}
 			
 			if($res != NULL)
 			{
