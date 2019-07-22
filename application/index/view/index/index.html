@@ -7,18 +7,14 @@
 	
 	<title>首页</title>
 	
-	<!-- Bootstrap -->
-	<link href="../../../static/css/index-bootstrap.min.css" rel="stylesheet">
-	<link href="../../../static/css/index-font-awesome.min.css" rel="stylesheet">
-	<link href="../../../static/css/index-magnific-popup.css" rel="stylesheet">
-	<link href="../../../static/css/index-animate.css" rel="stylesheet">
-	<link href="../../../static/css/index-owl.carousel.min.css" rel="stylesheet">
-
-	<!-- Main css -->
-	<link href="../../../static/css/index-main.css" rel="stylesheet">
+	<link href="../../../static/index/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../../static/index/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../../static/index/css/magnific-popup.css" rel="stylesheet">
+	<link href="../../../static/index/css/animate.css" rel="stylesheet">
+	<link href="../../../static/index/css/owl.carousel.min.css" rel="stylesheet">
+	<link href="../../../static/index/css/main.css" rel="stylesheet">
 	
-	<script src="../../../static/js/details-jquery-1.11.1.min.js">
-	</script>
+	<script src="../../../static/js/details-jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
@@ -36,27 +32,22 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav m-auto">
 					<li class="nav-item"><a class="nav-link" href="index.html">大数据过滤推荐系统</a></li>
-					
 				</ul>
 				{volist name="userinfo" id="vo"}
 				<ul class="navbar-nav m-auto">
-					<li class="nav-item"><a class="nav-link" href="index.html">欢迎您，{$vo.uname}</a></li>
+					<li class="nav-item"><a class="nav-link" href="../homepage/homepage">欢迎您，{$vo.uname}</a></li>
 				</ul>
 				{/volist}
-				
-				<div>
 					<a href="{:url('index/index/logout')}">注销</a>
-				</div>
 			</div>
 		</div>
 	</nav>
 </header>
-<!--/Header Area-->
 
 <!-- 轮播区域 -->
 <section class="hero-area owl-carousel">
 	<!--第一张滚动图 -->
-	<div class="single-hero dark-overlay" style="background: url('../../../static/images/index/hero-3.jpg') no-repeat;">
+	<div class="single-hero dark-overlay" style="background: url('../../../static/index/images/hero-3.jpg') no-repeat;">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -65,7 +56,7 @@
 							<div class="hero-left">
 								<h1>电影库 <br> 个性化推荐</h1>
 								<p>在 此 寻 找 美 妙 电 影</p>
-								<!-- <a href="#" class="bttn-mid btn-fill"> Download Now</a>-->
+								<a href="../library/library" class="bttn-mid btn-fill">立 即 查 看</a>
 							</div>
 						</div>
 					</div>
@@ -74,7 +65,7 @@
 		</div>
 	</div>
 	<!--第两张滚动图 -->
-	<div class="single-hero dark-overlay" style="background: url('../../../static/images/index/hero-6.jpg') no-repeat;">
+	<div class="single-hero dark-overlay" style="background: url('../../../static/index/images/hero-6.jpg') no-repeat;">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-xl-10 col-lg-10 col-md-12 col-sm-12">
@@ -92,7 +83,7 @@
 		</div>
 	</div>
 	<!--第三张滚动图 -->
-	<div class="single-hero dark-overlay" style="background: url('../../../static/images/index/hero-2.jpg') no-repeat;">
+	<div class="single-hero dark-overlay" style="background: url('../../../static/index/images/hero-2.jpg') no-repeat;">
 		<div class="hero-sub">
 			<div class="table-cell">
 				<div class="hero-normal">
@@ -121,7 +112,7 @@
 			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-4">
 				<div class="title-right">
 					<a href="../library/library" class="bttn-small btn-fill"><i class="fa fa-angle-left"></i>电影库</a>
-					<a href="../homepage/homepage" class="bttn-small btn-fill"><i class="fa fa-angle-left"></i>个人主页</a>
+					<!-- <a href="../homepage/homepage" class="bttn-small btn-fill"><i class="fa fa-angle-left"></i>个人主页</a> -->
 				</div>
 			</div>
 		</div>
@@ -130,7 +121,7 @@
 				<div class="cat-carousel owl-carousel">
 					{volist name="hottoday" id="vo"}
 					<div class="single-cat-item">
-						<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="310" width="200" >
+						<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="300" width="200" >
 						<div class="item-meta">
 							<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
 							<p>{$vo.tag}</p>
@@ -169,7 +160,7 @@
 			{volist name="recommendation" id="vo"}
 			<div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
 				<div class="single-cat-item">
-					<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="250" width="200" >
+					<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="250" width="170" >
 					<div class="item-meta">
 						<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
 						<p>{$vo.tag}</p>
@@ -431,18 +422,18 @@
 
 	
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../../../static/js/index-jquery-3.2.1.min.js"></script>
-<script src="../../../static/js/index-jquery-migrate.js"></script>
+<script src="../../../static/index/js/jquery-3.2.1.min.js"></script>
+<script src="../../../static/index/js/jquery-migrate.js"></script>
 
-<script src="../../../static/js/index-popper.js"></script>
-<script src="../../../static/js/index-bootstrap.min.js"></script>
-<script src="../../../static/js/index-owl.carousel.min.js"></script>
+<script src="../../../static/index/js/popper.js"></script>
+<script src="../../../static/index/js/bootstrap.min.js"></script>
+<script src="../../../static/index/js/owl.carousel.min.js"></script>
 
-<script src="../../../static/js/index-magnific-popup.min.js"></script>
-<script src="../../../static/js/index-wow.min.js"></script>
-<script src="../../../static/js/index-scrollUp.min.js"></script>
+<script src="../../../static/index/js/magnific-popup.min.js"></script>
+<script src="../../../static/index/js/wow.min.js"></script>
+<script src="../../../static/index/js/scrollUp.min.js"></script>
 
-<script src="../../../static/js/index-script.js"></script>
+<script src="../../../static/index/js/script.js"></script>
 
 <script>
 	$(".clickme").click(function()
