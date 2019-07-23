@@ -1,171 +1,156 @@
-<!doctype html>
-{volist name="moviedetails" id="vo"}
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	{volist name="moviedetails" id="vo"}
 	<title>{$vo.name}</title>
 	{/volist}
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<link href="../../../static/css/details-bootstrap.css" rel="stylesheet" type="text/css" />
-	<link href="../../../static/css/details-style.css" rel="stylesheet" type="text/css" media="all" />
 	
-	<!-- start plugins -->
-	<script type="text/javascript" src="../../../static/css/details-jquery-1.11.1.min.js"></script>
-	<link href="http://fonts.useso.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css">
+	<link href="../../../static/index/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../../static/index/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../../static/index/css/magnific-popup.css" rel="stylesheet">
+	<link href="../../../static/index/css/animate.css" rel="stylesheet">
+	<link href="../../../static/index/css/owl.carousel.min.css" rel="stylesheet">
+	<link href="../../../static/index/css/main.css" rel="stylesheet">
+	
+	<script src="../../../static/index/js/jquery-3.2.1.min.js"></script>
+	<script src="../../../static/index/js/jquery-migrate.js"></script>
+	<script src="../../../static/index/js/popper.js"></script>
+	<script src="../../../static/index/js/bootstrap.min.js"></script>
+	<script src="../../../static/index/js/owl.carousel.min.js"></script>
+	<script src="../../../static/index/js/magnific-popup.min.js"></script>
+	<script src="../../../static/index/js/wow.min.js"></script>
+	<script src="../../../static/index/js/scrollUp.min.js"></script>
+	<script src="../../../static/index/js/script.js"></script>
 </head>
 
 <body>
-<div class="container">
-	<div class="container_wrap">
-		<div class="header_top">
-			<div class="col-sm-3 header_right">
-			    <ul class="header_right_box">
-					<li><img src="../../../static/images/details/p1.png" alt=""/></li>
-					{volist name="userinfo" id="user"}
-					<li><p><a href="login.html">{$user.uname}</a></p></li>
-					{/volist}
-					<!-- <li class="last"><i class="edit"> </i></li> -->
-					<div class="clearfix"> </div>
-			    </ul>
-				<div>
-					<a href="{:url('index/index/logout')}">注销</a>
-				</div>
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: #E94755;">
+	<!-- LOGO -->
+	<nav class="navbar navbar-light">
+		<a class="navbar-brand" href="#">
+			<img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+		</a>
+	</nav>
+	<!-- 网站主题 -->
+	<nav class="navbar navbar-light">
+		<span class="navbar-brand mb-0 h1" style="font-family:verdana">大数据电影推荐</span>
+	</nav>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<!-- 跳转链接 -->
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="../index/index">首页<span class="sr-only">(current)</span></a>
+			</li>
+			&nbsp&nbsp
+			<li class="nav-item active">
+				<a class="nav-link" href="../library/library">电影库<span class="sr-only">(current)</span></a>
+			</li>
+			&nbsp
+			<li class="nav-item active">
+				<a class="nav-link" href="../index/index#hottoday">今日热门<span class="sr-only">(current)</span></a>
+			</li>
+			&nbsp
+			<li class="nav-item active">
+				<a class="nav-link" href="../index/index#recommendation">个性推荐<span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+	<!-- 搜索框 -->	
+		<form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="search" placeholder="请输入电影名" aria-label="Search">
+			&nbsp&nbsp&nbsp
+			<button class="btn btn-outline-light " type="submit" style="font-family:verdana">搜 索</button>
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		</form>
+		{volist name="userinfo" id="vo"}
+		<li class="dropdown navbar-nav">
+			<a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family:verdana">欢迎您，{$vo.uname}</a>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+				  <a class="dropdown-item" href="../homepage/homepage" style="font-family:verdana">我的主页</a>
+				  <a class="dropdown-item" href="../index/index#recommendation" style="font-family:verdana">个性推荐</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="{:url('index/index/logout')}" style="font-family:verdana">注销</a>
 			</div>
-			<div class="clearfix"> </div>
-	    </div>
-		<div class="content">
-      	   <div class="movie_top">
-      	         <div class="col-md-9 movie_box">
-						{volist name="moviedetails" id="vo"}
-                        <div class="grid images_3_of_2">
-                        	<!--
-							<div class="movie_image">
-                                <!-- <span class="movie_rating">5.0</span> -->
-                                <img src = "../../../static/images/movie/{$vo.imgname}" alt=""/>
+		</li>
+		{/volist}
+	</div>
+</nav>
 
-                        </div>
-                        <div class="desc1 span_3_of_2">
-							<p class="movie_option"><strong>片名：</strong>{$vo.name}</p>
-                        	<p class="movie_option"><strong>国家/地区: </strong>{$vo.location}</p>
-                        	<p class="movie_option"><strong>导演: </strong>{$vo.director}</p>
-                        	<p class="movie_option"><strong>演员: </strong>{$vo.actor}</p>
-                        	<p class="movie_option"><strong>上映时间: </strong>{$vo.releasedate}</p>
-                        	<p class="movie_option"><strong>时长: </strong>{$vo.runtime}</p>
-                        	<p class="movie_option"><strong>类别: </strong>{$vo.tag}</p>
-							<p class="movie_option"><strong>评分: </strong>{$vo.rate}</p>
-							<input type="button" class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" value="添加到我的喜欢">
-                            <!-- <p class="movie_option"><strong>Age restriction: </strong>13</p> -->
-                            <!-- <div class="down_btn"><a class="btn1" href="#"><span> </span>Download</a></div> -->
-                         </div>
-						 
-                        <div class="clearfix"> </div>
-		                <!--
-					 	<form>
-							<div class="to">
-		                     	<input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
-							 	<input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" style="margin-left:3%">
-							</div>
-							<div class="text">
-			                   <textarea value="Message:" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message:</textarea>
-			                </div>
-			                <div class="form-submit1">
-					           <input name="submit" type="submit" id="submit" value="Submit Your Message"><br>
-					        </div>
-							<div class="clearfix"></div>
-                 		</form>
-						-->
-		                <div class="single">
-		                <h1>电影简介</h1>
-		                <ul class="single_list">
-					        <li>
-					            <div class="data">
-									<div class="title">{$vo.summary}</div>
-					            </div>
-					            <div class="clearfix"></div>
-					        </li>
-			  			</ul>
-                      </div>
-                      </div>
-					 
-                      <div class="col-md-3">
-                      	<div class="movie_img"><div class="grid_2">
-							<img src="../../../static/images/details/pic6.jpg" class="img-responsive" alt="">
-							<div class="caption1">
-								<!--	
-								<ul class="list_5 list_7">
-							    	<li><i class="icon5"> </i><p>3,548</p></li>
-							    </ul>
-							    <i class="icon4 icon6 icon7"> </i>
-								-->
-							    <p class="m_3">美国队长</p>
-							</div>
-						    </div>
-						   </div>
-                      	  <div class="grid_2 col_1">
-							<img src="../../../static/images/details/pic2.jpg" class="img-responsive" alt="">
-							<div class="caption1">
-								<!--
-								<ul class="list_3 list_7">
-						    		<li><i class="icon5"> </i><p>3,548</p></li>
-						    	</ul>
-						    	<i class="icon4 icon7"> </i>
-								-->
-						    	<p class="m_3">复仇者联盟</p>
-							</div>
-						   </div>
-						    <div class="grid_2 col_1">
-							<img src="../../../static/images/details/pic9.jpg" class="img-responsive" alt="">
-							<div class="caption1">
-								<!--
-								<ul class="list_3 list_7">
-						    		<li><i class="icon5"> </i><p>3,548</p></li>
-						    	</ul>
-						    	<i class="icon4 icon7"> </i>
-								-->
-						    	<p class="m_3">无敌浩克</p>
-							</div>
-						   </div>
-		               </div> 
-                      <div class="clearfix"> </div>
-                  </div>
-           </div>
+<!-- 电影详情 -->
+<div class="container">
+	<br>
+{volist name="moviedetails" id="vo"}
+	<!-- 电影名 -->
+	<h2 class="mt-4 mb-3" style="font-family:verdana"><strong>{$vo.name}</strong></h2>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="../index/index" style="font-family:verdana">首页</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="../library/library" style="font-family:verdana">电影库</a>
+		</li>
+		<li class="breadcrumb-item active" style="font-family:verdana">{$vo.name}</li>
+	</ol>
+	<br>
+	<!-- 详情信息 -->
+	<div class="row">
+		<div class="col-md-4">
+			<img  src="../../../static/images/movie/{$vo.imgname}" alt="" width = "350" height = "450">
+		</div>
+		<div class="col-md-8">
+			<h4 class="my-3" style="font-family:verdana">详细信息</h4>
+			<ul>
+				<li><p style="font-family:verdana"><strong>评分:</strong>&nbsp&nbsp{$vo.rate}</p></li>
+				<li><p style="font-family:verdana"><strong>国家/地区:</strong>&nbsp&nbsp{$vo.location}</p></li>
+				<li><p style="font-family:verdana"><strong>导演:</strong>&nbsp&nbsp{$vo.director}</p></li>
+				<li><p style="font-family:verdana"><strong>演员:</strong>&nbsp&nbsp{$vo.actor}</p></li>
+				<li><p style="font-family:verdana"><strong>上映时间:</strong>&nbsp&nbsp{$vo.releasedate}</p></li>
+				<li><p style="font-family:verdana"><strong>时长:</strong>&nbsp&nbsp{$vo.runtime}</p></li>
+				<li><p style="font-family:verdana"><strong>类别:</strong>&nbsp&nbsp{$vo.tag}</p></li>
+			</ul>
+		</div>
+	</div>
+	<h4 class="my-3" style="font-family:verdana">电影剧情</h4>
+    <div class="row">
+		<div class="col-md-12">
+			<p>{$vo.summary}</p>
+		</div>
     </div>
-</div>
 {/volist}
 
-<script>
-	$(".clickme").click(function()
-	{
-		var id = $(this).attr("mid");
-		var tag = $(this).attr("mtag");
-		var rate = $(this).attr("mrate");
-		var el = $(this);
-		$.ajax(
-		{
-	        type:"GET",
-	        url:"mylove",
-			data:{"id":id,"tag":tag,"rate":rate},
-	        dataType:"json", 
-	        success:function(data)
-			{
-	         	alert(data["msg"]);
-				if(data["code"] == 200)
-				{
-					el.val("已收藏");
-				}
-	        },
-	        error:function(jqXHR)
-			{
-	           alert("发生错误："+ jqXHR.status);
-	        }
-		});
-	});		
-	
-	
-</script>
-
+    <!-- 相关推荐 -->
+    <h4 class="my-4" style="font-family:verdana">相关推荐</h4>
+    <div class="row">
+		<div class="col-md-3 col-sm-6 mb-4">
+			<a href="#">
+			<img class="img-fluid" src="http://placehold.it/500x300" alt="">
+			</a>
+		</div>
+		<div class="col-md-3 col-sm-6 mb-4">
+			<a href="#">
+			<img class="img-fluid" src="http://placehold.it/500x300" alt="">
+			</a>
+		</div>
+		<div class="col-md-3 col-sm-6 mb-4">
+			<a href="#">
+			<img class="img-fluid" src="http://placehold.it/500x300" alt="">
+			</a>
+		</div>
+		<div class="col-md-3 col-sm-6 mb-4">
+			<a href="#">
+			<img class="img-fluid" src="http://placehold.it/500x300" alt="">
+			</a>
+		</div>
+    </div>
+</div>
 </body>
 
 </html>

@@ -23,7 +23,6 @@ class Details extends Controller
 		$this -> assign('userinfo',$userinfo);
 		
 		$movieid = Request::instance()->param('id');
-		echo $movieid;
 		$list = Db::table('movielibrary')
 				   ->where('movieID','=',$movieid)
 				   ->field('movieID,actor,director,name,rate,releasedate,runtime,summary,tag,imgname,location')

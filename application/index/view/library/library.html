@@ -1,81 +1,88 @@
 ﻿<!doctype html>
-<html lang="en">
+<html  lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>电影库</title>
-
-<!-- Bootstrap -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>电影库</title>
+	
 	<link href="../../../static/index/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../../../static/index/css/font-awesome.min.css" rel="stylesheet">
 	<link href="../../../static/index/css/magnific-popup.css" rel="stylesheet">
 	<link href="../../../static/index/css/animate.css" rel="stylesheet">
 	<link href="../../../static/index/css/owl.carousel.min.css" rel="stylesheet">
-
-	<!-- Main css -->
 	<link href="../../../static/index/css/main.css" rel="stylesheet">
 	
+	<script src="../../../static/js/details-jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
-
-
-<!--Full Search-->
-<div class="search-full">
-	<button type="submit" class="search-close"><i class="fa fa-close"></i></button>
-	<div class="search-full--inner">
-		<div class="conatiner">
-			<div class="row justify-content-center">
-				<div class="col-xl-6 col-lg-6 col-md-10 col-sm-10">
-					<form class="main-search-form">
-						<input type="search" name="main_search" id="main_search" placeholder="Search here...">
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div><!--/Full Search-->
-
-<!--Header Area-->
-<header class="header-area">
-	<nav class="navbar sticky-top navbar-expand-lg main-menu">
-		<div class="container">
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="menu-toggle"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav m-auto">
-					<li class="nav-item"><a class="nav-link" href="index.html">电影库</a></li>
-				</ul>
-				{volist name="userinfo" id="vo"}
-				<ul class="navbar-nav m-auto">
-					<li class="nav-item"><a class="nav-link" href="index.html">{$vo.uname}</a></li>
-				</ul>
-				{/volist}
-				<div class="header-btn justify-content-end">
-					<button type="button" class="search-btn"><i class="fa fa-search"></i></button>
-				</div>
-				<div>
-					<a href="{:url('index/index/logout')}">注销</a>
-				</div>
-			</div>
-		</div>
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: #E94755;">
+	<!-- LOGO -->
+	<nav class="navbar navbar-light">
+		<a class="navbar-brand" href="#">
+			<img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+		</a>
 	</nav>
-</header>
-<!--/Header Area-->
+	<!-- 网站主题 -->
+	<nav class="navbar navbar-light">
+		<span class="navbar-brand mb-0 h1" style="font-family:verdana">大数据电影推荐</span>
+	</nav>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<!-- 跳转链接 -->
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="../index/index">首页<span class="sr-only">(current)</span></a>
+			</li>
+			&nbsp&nbsp
+			<li class="nav-item active">
+				<a class="nav-link" href="../library/library">电影库<span class="sr-only">(current)</span></a>
+			</li>
+			&nbsp
+			<li class="nav-item active">
+				<a class="nav-link" href="../index/index#hottoday">今日热门<span class="sr-only">(current)</span></a>
+			</li>
+			&nbsp
+			<li class="nav-item active">
+				<a class="nav-link" href="../index/index#recommendation">个性推荐<span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+	<!-- 搜索框 -->	
+		<form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="search" placeholder="请输入电影名" aria-label="Search">
+			&nbsp&nbsp&nbsp
+			<button class="btn btn-outline-light " type="submit" style="font-family:verdana">搜 索</button>
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		</form>
+		{volist name="userinfo" id="vo"}
+		<li class="dropdown navbar-nav">
+			<a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family:verdana">欢迎您，{$vo.uname}</a>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+				  <a class="dropdown-item" href="../homepage/homepage" style="font-family:verdana">我的主页</a>
+				  <a class="dropdown-item" href="../index/index#recommendation" style="font-family:verdana">个性推荐</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="{:url('index/index/logout')}" style="font-family:verdana">注销</a>
+			</div>
+		</li>
+		{/volist}
+	</div>
+</nav>
 
 
 <!--Category Section-->
-<section class="cat-section section-padding-2">
+<section class="cat-section">
+	<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-8 col-lg-8 col-md-6 col-sm-8">
 				<div class="section-title">
-					<h2>电影库</h2>
-					<p>在这里 寻找美妙电影</p>
+					<h2 style="font-family:verdana">电影库</h2>
+					<p style="font-family:verdana">在这里 寻找美妙电影</p>
 				</div>
 			</div>
 		</div>
@@ -85,8 +92,8 @@
 				<div class="single-cat-item">
 					<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="250" width="200" >
 					<div class="item-meta">
-						<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
-						<p>{$vo.tag}</p>
+						<h4 style="font-family:verdana"><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
+						<p style="font-family:verdana">{$vo.tag}</p>
 						<input type="button" class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" value="添加到我的喜欢">
 					</div>
 				</div>
@@ -97,6 +104,19 @@
 	</div>
 </section>
 <!--/Category Section-->
+
+<!-- 底部信息 -->
+<footer class="footer-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+				<div class="copyright centered">
+					<p style="font-family:verdana">--------------------&nbsp 我们是有底线的 &nbsp --------------------</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
 
 	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
