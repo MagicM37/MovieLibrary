@@ -2,29 +2,175 @@
 <html  lang="zh-CN">
 <head>
 	<meta charset="utf-8">
-	<title>搜索</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<title>搜索结果页</title>
+	
+	<link href="../../../static/index/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../../static/index/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../../../static/index/css/magnific-popup.css" rel="stylesheet">
+	<link href="../../../static/index/css/animate.css" rel="stylesheet">
+	<link href="../../../static/index/css/owl.carousel.min.css" rel="stylesheet">
+	<link href="../../../static/index/css/main.css" rel="stylesheet">
+	
+	<script src="../../../static/js/details-jquery-1.11.1.min.js"></script>
 </head>
-
 <body>
-    <div class="form-container sign-up-container">
-            <form action="search" method="post" enctype="multipart/form-data">
-                <h1>搜索</h1>
-                <input type="text" placeholder="请输入电影名" name="mvname">
-                <button  type="submit" name="submit">搜索</button>
-            </form>
-						{volist name="search" id="vo"}
-						<div class="single-cat-item">
-							<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="310" width="200" >
-							<div class="item-meta">
-								<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
-								<p>{$vo.tag}</p>
-								<p>{$vo.rate}</p>
-								<!--
-								<a href="" class="watch-list-btn"><i class="fa fa-sliders"></i>Add watch list</a>
-								-->
-							</div>
-						</div>
-						{/volist}
-    </div>
+<!-- 导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top " style="background-color: #E94755;">
+	<!-- LOGO -->
+	<nav class="navbar navbar-light">
+		<a class="navbar-brand" href="#">
+			<img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+		</a>
+	</nav>
+	<!-- 网站主题 -->
+	<nav class="navbar navbar-light">
+		<span class="navbar-brand mb-0 h1" style="font-family:verdana">大数据电影推荐</span>
+	</nav>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<!-- 跳转链接 -->
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="../index/index">首页<span class="sr-only">(current)</span></a>
+			</li>
+			&nbsp&nbsp
+			<li class="nav-item active">
+				<a class="nav-link" href="../library/library">电影库<span class="sr-only">(current)</span></a>
+			</li>
+			&nbsp
+			<li class="nav-item active">
+				<a class="nav-link" href="../index/index#hottoday">今日热门<span class="sr-only">(current)</span></a>
+			</li>
+			&nbsp
+			<li class="nav-item active">
+				<a class="nav-link" href="../index/index#recommendation">个性推荐<span class="sr-only">(current)</span></a>
+			</li>
+		</ul>
+		<!-- 用户下拉列表 -->
+		{volist name="userinfo" id="vo"}
+		<li class="dropdown navbar-nav">
+			<a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family:verdana">{$vo.uname}</a>
+			<div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuLink" style="max-width: 100px;">
+				  <a class="dropdown-item" href="../homepage/homepage" style="font-family:verdana">我的主页</a>
+				  <a class="dropdown-item" href="#recommendation" style="font-family:verdana">个性推荐</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="{:url('index/index/logout')}" style="font-family:verdana">退出登录</a>
+			</div>
+		</li>
+		{/volist}
+	</div>
+</nav>
+
+<div class="container">
+	<div class="form-container sign-up-container">
+		<!-- 标题 -->
+		<h2 class="mt-4 mb-3" style="font-family:verdana"><small>电影搜索</small></h2>
+		<!-- 面包屑导航栏 -->
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="../index/index" style="font-family:verdana">首页</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="../library/library" style="font-family:verdana">电影库</a>
+			</li>
+			<li class="breadcrumb-item active" style="font-family:verdana">搜索</li>
+		</ol>
+		<!-- 搜索框 -->
+		<br>
+		<center>
+		<form action="search" method="post" enctype="multipart/form-data" style="width: 49rem;">
+			<div class="input-group mb-3  input-group-lg ">
+				<input type="text font-family:verdana" class="form-control" placeholder="请输入电影名" name="mvname">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary text-light" type="submit font-family:verdana" style="background-color:#E94755;">快 速 搜 索</button>
+				</div>
+			</div>
+		</form>
+		</center>
+		<!-- 搜索结果展示 -->
+		{volist name="search" id="vo"}
+		<br>
+		<div class="card-group">
+			<div class="col-md-2"></div>
+			<div class="card">
+				<div class="row no-gutters">
+					<div class="col-md-3 single-cat-item">
+						<img src="../../../static/images/movie/{$vo.imgname}"  width = "250" >
+					</div>
+					<div class="col-md-9">
+						<div class="card-body">
+							<h4 class="card-title text-dark"><a href="../details/details?id={$vo.movieID}"><strong>{$vo.name}</strong></h4></a>
+							<ul>
+							<li><p style="font-family:verdana"><strong>评分:</strong>&nbsp&nbsp{$vo.rate}</p></li>
+							<li><p style="font-family:verdana"><strong>标签:</strong>&nbsp&nbsp{$vo.tag}</p></li>
+							<li><p style="font-family:verdana"><strong>主演:</strong>&nbsp&nbsp{$vo.actor}</p></li>
+							</ul>
+					</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<br>
+		{/volist}
+	</div>
+</div>
+<br><br>
+<!-- 底部信息 -->
+<footer class="footer-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+				<div class="copyright centered">
+					<p style="font-family:verdana">--------------------&nbsp 啊哦，只搜到这些唉 &nbsp --------------------</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+	
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../../../static/index/js/jquery-3.2.1.min.js"></script>
+<script src="../../../static/index/js/jquery-migrate.js"></script>
+<script src="../../../static/index/js/popper.js"></script>
+<script src="../../../static/index/js/bootstrap.min.js"></script>
+<script src="../../../static/index/js/owl.carousel.min.js"></script>
+<script src="../../../static/index/js/magnific-popup.min.js"></script>
+<script src="../../../static/index/js/wow.min.js"></script>
+<script src="../../../static/index/js/scrollUp.min.js"></script>
+<script src="../../../static/index/js/script.js"></script>
+<script>
+	$(".clickme").click(function()
+	{
+		var id = $(this).attr("mid");
+		var tag = $(this).attr("mtag");
+		var rate = $(this).attr("mrate");
+		var el = $(this);
+		$.ajax(
+		{
+		        type:"GET",
+		        url:"mylove",
+			data:{"id":id,"tag":tag,"rate":rate},
+		        dataType:"json", 
+		        success:function(data)
+			{
+		         	alert(data["msg"]);
+				if(data["code"] == 200)
+				{
+					el.val("已收藏");
+				}
+		        },
+		        error:function(jqXHR)
+			{
+		           alert("发生错误："+ jqXHR.status);
+		        }
+		});
+	});	
+</script>
 </body>
 </html>
