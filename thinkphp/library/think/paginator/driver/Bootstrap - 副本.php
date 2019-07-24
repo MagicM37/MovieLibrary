@@ -108,20 +108,15 @@ class Bootstrap extends Paginator
      */
     public function render()
     {
-        if ($this->hasPages()) 
-		{
-            if ($this->simple) 
-			{
-                return sprintf
-				(
-					'<ul class="pager">%s %s</ul>',
+        if ($this->hasPages()) {
+            if ($this->simple) {
+                return sprintf(
+                    '<ul class="pager">%s %s</ul>',
                     $this->getPreviousButton(),
                     $this->getNextButton()
                 );
-            } else 
-			{
-                return sprintf
-				(
+            } else {
+                return sprintf(
                     '<ul class="pagination">%s %s %s</ul>',
                     $this->getPreviousButton(),
                     $this->getLinks(),
@@ -140,7 +135,7 @@ class Bootstrap extends Paginator
      */
     protected function getAvailablePageWrapper($url, $page)
     {
-        return '<li class="page-item"><a class="page-link text-danger " href="' . htmlentities($url) . '">' . $page . '</a></li>';
+        return '<li><a href="' . htmlentities($url) . '">' . $page . '</a></li>';
     }
 
     /**
@@ -151,7 +146,7 @@ class Bootstrap extends Paginator
      */
     protected function getDisabledTextWrapper($text)
     {
-        return '<li class="page-item disabled"><span class="page-link text-muted ">' . $text . '</span></li>';
+        return '<li class="disabled"><span>' . $text . '</span></li>';
     }
 
     /**
@@ -162,7 +157,7 @@ class Bootstrap extends Paginator
      */
     protected function getActivePageWrapper($text)
     {
-        return '<li class="page-item active"><span class="page-link bg-danger">' . $text . '</span></li>';
+        return '<li class="active"><span>' . $text . '</span></li>';
     }
 
     /**
