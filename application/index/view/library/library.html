@@ -59,14 +59,15 @@
 			<button class="btn btn-outline-light " type="submit" style="font-family:verdana">搜 索</button>
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		</form>
+		<!-- 用户下拉列表 -->
 		{volist name="userinfo" id="vo"}
 		<li class="dropdown navbar-nav">
 			<a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family:verdana">欢迎您，{$vo.uname}</a>
-			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+			<div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuLink" style="max-width: 100px;">
 				  <a class="dropdown-item" href="../homepage/homepage" style="font-family:verdana">我的主页</a>
 				  <a class="dropdown-item" href="../index/index#recommendation" style="font-family:verdana">个性推荐</a>
 				  <div class="dropdown-divider"></div>
-				  <a class="dropdown-item" href="{:url('index/index/logout')}" style="font-family:verdana">注销</a>
+				  <a class="dropdown-item" href="{:url('index/index/logout')}" style="font-family:verdana">退出登录</a>
 			</div>
 		</li>
 		{/volist}
