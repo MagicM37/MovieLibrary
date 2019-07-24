@@ -54,7 +54,7 @@ class Index extends Controller
 		//销毁session
 		session("userinfo", NULL);
 		//跳转页面
-		return $this->success('退出登录成功',url('Login/login'));
+		return $this->success('您已退出登录',url('Login/login'));
 	}
 	
 	public function mylove()
