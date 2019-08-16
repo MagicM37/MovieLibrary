@@ -17,9 +17,9 @@ return [
     // 数据库名
     'database'        => 'movie',
     // 用户名
-    'username'        => 'root',
+    'username'        => 'movie',
     // 密码
-    'password'        => '123456',
+    'password'        => 'movie160080',
     // 端口
     'hostport'        => '',
     // 连接dsn

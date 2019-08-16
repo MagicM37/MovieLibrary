@@ -25,7 +25,7 @@
 	<!-- LOGO -->
 	<nav class="navbar navbar-light">
 		<a class="navbar-brand" href="#">
-			<img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+			<p width="30" height="30" alt=""/>
 		</a>
 	</nav>
 	<!-- 网站主题 -->
@@ -149,8 +149,8 @@
 						<div class="item-meta">
 							<h4 style="font-family:verdana"><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
 							<p style="font-family:verdana">{$vo.tag}</p>
-							<input type="button" class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" value="添加到我的喜欢">
-						</div>
+							<p class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" style="background:url(../../../static/images/index/{$vo.like}) no-repeat;background-size:100% 100%;width:100px;height:100px;  float:left; margin: 30px; margin-bottom: 5px; "></p>
+						</div>						
 					</div>
 					{/volist}
 				</div>
@@ -172,14 +172,26 @@
 			</div>
 		</div>
 		<div class="row">
-			{volist name="recommendation" id="vo"}
+			{volist name="recommendation1" id="vo"}
 			<div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
 				<div class="single-cat-item">
 					<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="250" width="170" >
 					<div class="item-meta">
 						<h4 style="font-family:verdana"><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
 						<p style="font-family:verdana">{$vo.tag}</p>
-						<input type="button" class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" value="添加到我的喜欢">
+						<p class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" style="background:url(../../../static/images/index/{$vo.like}) no-repeat;background-size:100% 100%;width:100px;height:100px;  float:left; margin: 15px; margin-bottom: 5px; "></p>
+					</div>
+				</div>
+			</div>
+			{/volist}
+			{volist name="recommendation2" id="vo"}
+			<div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
+				<div class="single-cat-item">
+					<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="250" width="170" >
+					<div class="item-meta">
+						<h4 style="font-family:verdana"><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
+						<p style="font-family:verdana">{$vo.tag}</p>
+						<p class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" style="background:url(../../../static/images/index/{$vo.like}) no-repeat;background-size:100% 100%;width:100px;height:100px;  float:left; margin: 15px; margin-bottom: 5px; "></p>
 					</div>
 				</div>
 			</div>
@@ -231,7 +243,8 @@
 	         	alert(data["msg"]);
 				if(data["code"] == 200)
 				{
-					el.val("已收藏");
+					//el.val("已喜欢");
+					el.css({"background":"url(../../../static/images/index/like_full.png) no-repeat","background-size":"100% 100%"});
 				}
 	        },
 	        error:function(jqXHR)
@@ -240,8 +253,6 @@
 	        }
 		});
 	});		
-	
-	
 </script>
 </body>
 </html>

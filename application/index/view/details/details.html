@@ -24,7 +24,7 @@
 	<!-- LOGO -->
 	<nav class="navbar navbar-light">
 		<a class="navbar-brand" href="#">
-			<img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+			<p width="30" height="30" alt=""/>
 		</a>
 	</nav>
 	<!-- 网站主题 -->
@@ -93,7 +93,12 @@
 	<!-- 详情信息 -->
 	<div class="row">
 		<div class="col-md-4">
-			<img  src="../../../static/images/movie/{$vo.imgname}" alt="" width = "350" height = "450">
+			<div class="single-cat-item">
+				<img  src="../../../static/images/movie/{$vo.imgname}" alt="" width = "350" height = "450">
+				<div class="item-meta">
+					<p class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" style="background:url(../../../static/images/index/{$vo.like}) no-repeat;background-size:100% 100%;width:100px;height:100px;  float:left; margin: 110px; margin-bottom: 50px; "></p>					
+				</div>
+			</div>
 		</div>
 		<div class="col-md-8">
 			<h4 class="my-3" style="font-family:verdana">详细信息</h4>
@@ -119,26 +124,41 @@
     <!-- 相关推荐 -->
     <h4 class="my-4" style="font-family:verdana">相关推荐</h4>
     <div class="row">
-		<div class="col-md-3 col-sm-6 mb-4">
-			<a href="#">
-			<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-			</a>
-		</div>
-		<div class="col-md-3 col-sm-6 mb-4">
-			<a href="#">
-			<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-			</a>
-		</div>
-		<div class="col-md-3 col-sm-6 mb-4">
-			<a href="#">
-			<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-			</a>
-		</div>
-		<div class="col-md-3 col-sm-6 mb-4">
-			<a href="#">
-			<img class="img-fluid" src="http://placehold.it/500x300" alt="">
-			</a>
-		</div>
+		{volist name="recommendation1" id="vo"}
+			<div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
+				<div class="single-cat-item">
+					<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="250" width="170" >
+					<div class="item-meta">
+						<h4 style="font-family:verdana"><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
+						<p style="font-family:verdana">{$vo.tag}</p>
+						<p class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" style="background:url(../../../static/images/index/{$vo.like}) no-repeat;background-size:100% 100%;width:100px;height:100px;  float:left; margin: 15px; margin-bottom: 5px; "></p>
+					</div>
+				</div>
+			</div>
+		{/volist}
+		{volist name="recommendation2" id="vo"}
+			<div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
+				<div class="single-cat-item">
+					<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="250" width="170" >
+					<div class="item-meta">
+						<h4 style="font-family:verdana"><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
+						<p style="font-family:verdana">{$vo.tag}</p>
+						<p class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" style="background:url(../../../static/images/index/{$vo.like}) no-repeat;background-size:100% 100%;width:100px;height:100px;  float:left; margin: 15px; margin-bottom: 5px; "></p>
+					</div>
+				</div>
+			</div>
+		{/volist}
+		{volist name="recommendation3" id="vo"}
+			<div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
+				<div class="single-cat-item">
+					<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="250" width="170" >
+					<div class="item-meta">
+						<h4 style="font-family:verdana"><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
+						<p style="font-family:verdana">{$vo.tag}</p>
+						<p class="clickme" mid="{$vo.movieID}" mtag = "{$vo.tag}" mrate = "{$vo.rate}" style="background:url(../../../static/images/index/{$vo.like}) no-repeat;background-size:100% 100%;width:100px;height:100px;  float:left; margin: 15px; margin-bottom: 5px; "></p>					</div>
+				</div>
+			</div>
+		{/volist}	
     </div>
 </div>
 
@@ -151,6 +171,38 @@
 	<script src="../../../static/index/js/wow.min.js"></script>
 	<script src="../../../static/index/js/scrollUp.min.js"></script>
 	<script src="../../../static/index/js/script.js"></script>
+	
+
+<script>
+	$(".clickme").click(function()
+	{
+		var id = $(this).attr("mid");
+		var tag = $(this).attr("mtag");
+		var rate = $(this).attr("mrate");
+		var el = $(this);
+		$.ajax(
+		{
+	        type:"GET",
+	        url:"mylove",
+			data:{"id":id,"tag":tag,"rate":rate},
+	        dataType:"json", 
+	        success:function(data)
+			{
+	         	alert(data["msg"]);
+				if(data["code"] == 200)
+				{
+					//el.val("已喜欢");
+					el.css({"background":"url(../../../static/images/index/like_full.png) no-repeat","background-size":"100% 100%"});
+				}
+	        },
+	        error:function(jqXHR)
+			{
+	           alert("发生错误："+ jqXHR.status);
+	        }
+		});
+	});		
+</script>
+
 </body>
 
 </html>

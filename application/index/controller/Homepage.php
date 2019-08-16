@@ -13,8 +13,20 @@ class Homepage extends Controller
 	 public function Homepage()
 	{
 		
+		//判断用户是否登录
+		if(!Session::has('userinfo'))
+		{
+            return $this->error('您没有登陆',url('Login/login'));
+        }
+		
+		$userinfo = Session::get('userinfo');
+		//dump(session('user'));
+		//dump($userinfo);
+		$this -> assign('userinfo',$userinfo);
+		
 		//显示用户信息
 		$User_id = Session::get('userID');
+		
 		
 		$list1 = Db::table('user')
 				   ->where('uid','=',$User_id)

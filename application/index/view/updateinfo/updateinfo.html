@@ -13,7 +13,6 @@
 	<link href="../../../static/index/css/animate.css" rel="stylesheet">
 	<link href="../../../static/index/css/owl.carousel.min.css" rel="stylesheet">
 	<link href="../../../static/index/css/main.css" rel="stylesheet">
-	
 </head>
 
 <body>
@@ -74,10 +73,10 @@
 	</div>
 </nav>
 
-<!--Category Section-->
+<body>
 <div class="container">
 	<!-- 标题 -->
-	<h2 class="mt-4 mb-3" style="font-family:verdana"><small>我的主页</small></h2>
+	<h2 class="mt-4 mb-3" style="font-family:verdana"><small>修改个人资料</small></h2>
 	<!-- 面包屑导航栏 -->
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item">
@@ -86,51 +85,50 @@
 		<li class="breadcrumb-item">
 			<a href="../homepage/homepage" style="font-family:verdana">个人主页</a>
 		</li>
-		<li class="breadcrumb-item">
-			<a href="../updateinfo/updateinfo" style="font-family:verdana">修改个人资料</a>
-		</li>
+		<li class="breadcrumb-item active" style="font-family:verdana">修改个人资料</li>
 	</ol>
 	<br>
-	{volist name="personalinfo" id="vo"}
-	<div class="row">
-		<div class="col-4">
-			<div class="list-group" id="list-tab" role="tablist">
-			<a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home" style="width: 15rem;"><center>用户昵称</center></a>
-			<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile" style="width: 15rem;"><center>用户邮箱</center></a>
-			<a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages" style="width: 15rem;"><center>个人简介</center></a>
-			</div>
-		</div>
-	<div class="col-8">
-		<div class="tab-content" id="nav-tabContent">
-			<div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><p style = "float:left; margin: 60px; margin-bottom: 50px;"><font size="6">{$vo.uname}</font></p></div>
-			<div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"><p style = "float:left; margin: 60px; margin-bottom: 5px;"><font size="6">{$vo.uemail}</font></p></div>
-			<div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list"><p style = "float:left; margin: 60px; margin-bottom: 5px;"><font size="6">我们要演一出大戏，让人永生难忘！</font></p></div>
-		</div>
-		</div>
-	</div>
-	{/volist}
-	<br>	
-	<h4 class="my-4" style="font-family:verdana">我的喜欢</h4>
-	<br>
-	<div class="container">
-		<div class="row">
-			{volist name="myfavor" id="vo"}
-			<div class="col-xl-2 col-lg-2 col-md-3 col-sm-6">
-				<div class="single-cat-item">
-					<img src="../../../static/images/movie/{$vo.imgname}" alt="" height="250" width="200" >
-					<div class="item-meta">
-						<h4><a href="../details/details?id={$vo.movieID}">{$vo.name}</a></h4>
-						<p>{$vo.tag}</p>
-					</div>
+	<center>
+		<form style="width: 40rem;" action="updateinfo" method="post">
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">用户昵称</span>
 				</div>
+				<input type="text" class="form-control" name="uname" placeholder="请输入新昵称" >
 			</div>
-			{/volist}
-		</div>
-	</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">用户邮箱</span>
+				</div>
+				<input type="text" class="form-control"  name="uemail" placeholder="请输入新邮箱" >
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">旧的密码</span>
+				</div>
+				<input type="password" class="form-control" name="password"  placeholder="请输入旧密码" >
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">新的密码</span>
+				</div>
+				<input type="password" class="form-control" name="newpassword" placeholder="请输入新密码" >
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">确认密码</span>
+				</div>
+				<input type="password" class="form-control" name="newconfirm" placeholder="请确认新密码" >
+			</div>
+			<br><br>
+			<button type="submit" class="btn btn-danger">确认修改</button>
+		</form> 
+	</center>
+	
 </div>
-<!--/Category Section-->
+		
 
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
 <!-- 底部信息 -->
 <footer class="footer-area">
 	<div class="container">

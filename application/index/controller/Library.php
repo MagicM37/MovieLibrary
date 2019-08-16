@@ -13,25 +13,18 @@ class Library extends Controller
 	
     public function Library()
 	{
-		/*
-		$list = Db::table('movie')
-				   ->field('imgname,name,tag,movieID')
-				   ->limit(24)
-				   ->select();
-		$this->assign('library',$list);
-		*/
-		
+		//判断用户是否登录
 		if(!Session::has('userinfo'))
 		{
             return $this->error('您没有登陆',url('Login/login'));
         }
 		$userinfo = Session::get('userinfo');
-		//dump(session('user'));
-		//dump($userinfo);
 		$this -> assign('userinfo',$userinfo);
 		
-		// 查询状态为1的用户数据 并且每页显示10条数据
-		$list = Db::name('movielibrary')->paginate(24,22850);
+		//显示电影库
+		$uid = Session::get('userID');
+		$list = Db::name('movielibrary')->paginate(24,17821);
+		
 		// 获取分页显示
 		$page = $list->render();
 		// 模板变量赋值
@@ -39,19 +32,6 @@ class Library extends Controller
 		$this->assign('page', $page);
 		// 渲染模板输出
 		return $this->fetch();
-	}
-	
-	public function mylove()
-	{
-		$mid = request()->param("id");
-		$tag = request()->param("tag");
-		$rate = request()->param("rate");
-		$uid = Session::get('userID');
-
-		$data = ['userid' => $uid , 'mid' => $mid , 'tag' => $tag , 'rate' => $rate];
-		Db::table('relation')->insert($data);
-		
-		return json(["code" => 200, "msg" => "已收藏" , "id" => $mid]);
 	}
 }
 

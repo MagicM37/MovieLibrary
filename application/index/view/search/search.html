@@ -22,7 +22,7 @@
 	<!-- LOGO -->
 	<nav class="navbar navbar-light">
 		<a class="navbar-brand" href="#">
-			<img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+			<p width="30" height="30" alt=""/>
 		</a>
 	</nav>
 	<!-- 网站主题 -->
@@ -85,7 +85,7 @@
 		<center>
 		<form action="search" method="post" enctype="multipart/form-data" style="width: 49rem;">
 			<div class="input-group mb-3  input-group-lg ">
-				<input type="text font-family:verdana" class="form-control" placeholder="请输入电影名" name="mvname">
+				<input type="text font-family:verdana" class="form-control" placeholder="请输入信息" name="mvname">
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary text-light" type="submit font-family:verdana" style="background-color:#E94755;">快 速 搜 索</button>
 				</div>
@@ -144,33 +144,5 @@
 <script src="../../../static/index/js/wow.min.js"></script>
 <script src="../../../static/index/js/scrollUp.min.js"></script>
 <script src="../../../static/index/js/script.js"></script>
-<script>
-	$(".clickme").click(function()
-	{
-		var id = $(this).attr("mid");
-		var tag = $(this).attr("mtag");
-		var rate = $(this).attr("mrate");
-		var el = $(this);
-		$.ajax(
-		{
-		        type:"GET",
-		        url:"mylove",
-			data:{"id":id,"tag":tag,"rate":rate},
-		        dataType:"json", 
-		        success:function(data)
-			{
-		         	alert(data["msg"]);
-				if(data["code"] == 200)
-				{
-					el.val("已收藏");
-				}
-		        },
-		        error:function(jqXHR)
-			{
-		           alert("发生错误："+ jqXHR.status);
-		        }
-		});
-	});	
-</script>
 </body>
 </html>

@@ -13,6 +13,7 @@ class Search extends Controller
 {	
 	public function search()
 	{
+		//判断用户是否登录
 		if(!Session::has('userinfo'))
 		{
             return $this->error('您没有登陆',url('Login/login'));
@@ -21,12 +22,16 @@ class Search extends Controller
 		$userinfo = Session::get('userinfo');
 		$this -> assign('userinfo',$userinfo);
 		
+		//实现模糊搜索，支持标签，电影名，地区，演员。
 		$mvname = input('request.mvname');
 		if($mvname != NULL)
 		{
 			$list = Db::table('movielibrary')
 				       ->field('imgname,rate,name,tag,movieID,actor')
-				       ->where('name','like','%'.$mvname.'%')
+				       ->whereOr('name','like','%'.$mvname.'%')
+					   ->whereOr('tag','like','%'.$mvname.'%')
+					   ->whereOr('location','like','%'.$mvname.'%')
+					   ->whereOr('actor','like','%'.$mvname.'%')
 				       ->select();
 			$this->assign('search',$list);
 			return $this->fetch('search');
